@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-services-deploy
+spec:
+  selector:
+    matchLabels:
+      app: server-web-services
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: server-web-services
+    spec:
+      containers:
+      - args:
+        - gunicorn
+        - example_reporting_web_services.app_ws:app
+        - --bind
+        - 0.0.0.0:50503
+        - -w
+        - "2"
+        - -k
+        - uvicorn.workers.UvicornWorker
+        image: sarramagna/example_reporting_web_services:1.4
+        name: server-web-services
+        ports:
+        - containerPort: 50503
+
+

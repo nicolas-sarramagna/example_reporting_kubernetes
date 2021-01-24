@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: main-app
+spec:
+     containers:
+     - command: ["/bin/bash"]
+       args: ["-c", "cp -f ./docker_config_prod/*.cfg /usr/src/app/example_reporting_main/config/. ; python example_reporting_main/main.py"]
+       image: sarramagna/example_reporting_main
+       name: main-app
+       ports:
+       - containerPort: 50603
+       env:
+       - name: email_sender
+         value: <to fill>
+       - name: email_receiver
+         value: <to fill>
+       - name: secure_mode_login
+         value: <to fill>
+       - name: secure_mode_pwd
+         value: <to fill>
+     restartPolicy: Never
+
+       
+

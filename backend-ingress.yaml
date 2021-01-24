@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ws-ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: web-services.k8s.com
+      http:
+        paths:
+          - path: /
+            backend:  
+              serviceName: server-web-services
+              servicePort: 50503 
+
+

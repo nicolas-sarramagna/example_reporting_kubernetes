@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-web-services
+  labels:
+    service: server-web-services
+spec:
+  selector:
+    app: server-web-services
+  type: ClusterIP
+  ports:
+    - port: 50503
+      targetPort: 50503
+
+
