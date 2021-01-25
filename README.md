@@ -55,12 +55,35 @@ The endpoints of this web service are described [here](https://github.com/nicola
 
 The web services is now ON !
 
-11. Fill fieds on main-pod.yaml
+# Create and send the report with a Pod
+We will use a Kubernetes Secret objet for the usage of our environment values, it is not a safe solution in Prod !, see for ex this [link](https://blog.nillsf.com/index.php/2020/02/24/dont-use-environment-variables-in-kubernetes-to-consume-secrets/).
 
-12. kubectl apply -f main-pod.yaml
+## Fill the secret fields
+Edit the file *main-secret.yaml' and fill the fields with a base64 value.
+This file works for with a gmail account.
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: main-secret
+type: Opaque
+data:
+  EMAIL_SENDER: <base64 encoding, ex echo -n 'my-email' | base64 >
+  EMAIL_RECEIVER: <base64 encoding>
+  SECURE_MODE_LOGIN: <base64 encoding>
+  SECURE_MODE_PWD: <base64 encoding>
+```
+## Create the secret
+Type **kubectl apply -f main-secret.yaml**, check with **kubectl get secret main-secret**
 
-13. check kubectl get pods
+## Send the report 
+It is time to consume the web service, to create the html message and to send the email !
+Type **kubectl apply -f main-pod-secret.yaml**, check with **kubectl get pods**, the status is *Running* then *Completed*.
 
-14. kubectl logs main-app
+Check the logs with **kubectl logs main-app**
 
-15. checl mail box 
+You can now check the mailbox to see the report :)
+
+To send the report again, delete first the pod with **kubectl delete pod main-app** then type again **kubectl apply -f main-pod-secret.yaml**
+
+
