@@ -66,7 +66,8 @@ We will use a Kubernetes Secret objet for the usage of our environment values, i
 
 ## Fill the secret fields
 Edit the file *main-secret.yaml' and fill the fields with a base64 value.
-This file works for with a gmail account.
+
+In my case, i test with a gmail account.
 ```yaml
 apiVersion: v1
 kind: Secret
