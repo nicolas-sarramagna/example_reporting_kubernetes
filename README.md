@@ -19,7 +19,7 @@ So, type **minikube addons enable ingress** to enable the nginx Ingress controll
 
 Wait a little, then chek with the command **kubectl get pods -n kube-system**, we will see that the Pod *ingress-nginx-controller* is Running.
 
-to add screenshot
+![ingress controller up](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/01-ingress-nginx-controller-up.png)
 
 # Deploy the reporting web sevices
 This web service comes from the projet [reporting_web_services](https://github.com/nicolas-sarramagna/example_reporting_web_services).
@@ -29,10 +29,12 @@ Type **kubectl  apply -f backend-deployment.yaml** then check with **kubectl get
 
 Wait for the Running status.
 
-o add screenshot
+![ws deploy](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/02-ws-deploy.png)
 
 ## Create the service
 Type **kubectl  apply -f backend-service.yaml**, check with **kubectl get services**
+
+![ws service](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/03-ws-service.png)
 
 # Expose the web services
 We need an url to expose the web service, we choose *web-services.k8s.com*.
@@ -48,8 +50,12 @@ In my case, 192.168.49.2 is the ip of my cluster.
 ## Expose the url
 Type **kubectl  apply -f backend-ingress.yaml**, check with **kubectl get ingress**
 
+![ws ingress](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/04-ws-ingress.png)
+
 ## Test the url
 For example, type **curl http://web-services.k8s.com/api/v1/trend/indicator/tradingview** or copy url in a browser.
+
+![ws curl](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/04%20b%20curl%20ws.png)
 
 The endpoints of this web service are described [here](https://github.com/nicolas-sarramagna/example_reporting_web_services).
 
@@ -76,11 +82,17 @@ data:
 ## Create the secret
 Type **kubectl apply -f main-secret.yaml**, check with **kubectl get secret main-secret**
 
+![main secret](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/05-main-secret.png)
+
 ## Send the report 
 It is time to consume the web service, to create the html message and to send the email !
 Type **kubectl apply -f main-pod-secret.yaml**, check with **kubectl get pods**, the status is *Running* then *Completed*.
 
+![main pod](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/06-main-pod.png)
+
 Check the logs with **kubectl logs main-app**
+
+![main logs](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/07-main-done.png)
 
 You can now check the mailbox to see the report :)
 
