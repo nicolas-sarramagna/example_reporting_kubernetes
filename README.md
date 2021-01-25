@@ -86,7 +86,8 @@ Type **kubectl apply -f main-secret.yaml**, check with **kubectl get secret main
 ![main secret](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/05-main-secret.png)
 
 ## Send the report 
-It is time to consume the web service, to create the html message and to send the email !
+It is time to consume the web service, to create the html message and to send the email :)
+
 Type **kubectl apply -f main-pod-secret.yaml**, check with **kubectl get pods**, the status is *Running* then *Completed*.
 
 ![main pod](https://github.com/nicolas-sarramagna/example_reporting_kubernetes/blob/main/images/06-main-pod.png)
