@@ -5,7 +5,7 @@ Example of usages of kubernetes with the reporting projects
 [reporting_main](https://github.com/nicolas-sarramagna/example_reporting_main).
 
 # Test with minikube
-Open a terminal, install minikube if not -> [link minikube installation guide](https://kubernetes.io/fr/docs/tasks/tools/install-minikube/)
+Open a terminal, install minikube if needed -> [minikube installation guide](https://kubernetes.io/fr/docs/tasks/tools/install-minikube/)
 
 # Start the cluster
 To avoid issue with the pulling of images from Docker, a (speed) workaround is to start with a fresh minikube cluster with the insecure-registry option.
