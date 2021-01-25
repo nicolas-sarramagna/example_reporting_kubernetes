@@ -1,5 +1,7 @@
 # example_reporting_kubernetes
-example of usages of kubernetes of the reporting projects
+example of usages of kubernetes with the reporting projects 
+[reporting_web_services](https://github.com/nicolas-sarramagna/example_reporting_web_services) and 
+[reporting_main](https://github.com/nicolas-sarramagna/example_reporting_main).
 
 ## test with minikube
 *formatting in progress to add screenshots and addtional details*
